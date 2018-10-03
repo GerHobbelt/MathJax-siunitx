@@ -21,6 +21,8 @@
  *  limitations under the License.
  */
 
+/* eslint-env amd */
+
 define(['./siunitx-options-definition'],function(SIunitxOptions) {
   'use strict';
   
@@ -47,7 +49,7 @@ define(['./siunitx-options-definition'],function(SIunitxOptions) {
     GenerateRegex: function (options) {
       function reescape(s) {
         return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-      };
+      }
       var decimal_sep = '(?:\\.|,)';
       var sign = '(\\+|-|\\\\pm|\\\\mp|\\\\le|\\\\leq|\\\\ll|\\\\ge|\\\\geq|\\\\gg|\\\\sim)';
       var digit = '[0-9]';
@@ -78,7 +80,7 @@ define(['./siunitx-options-definition'],function(SIunitxOptions) {
         '<<': '\\ll',
         '>>': '\\gg',
       };
-      for (key in replacements) {
+      for (var key in replacements) {
         str = str.replace(key, replacements[key]);
       }
       this.parsed = this._parse_multi_part_number(str);

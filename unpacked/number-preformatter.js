@@ -21,9 +21,12 @@
  *  limitations under the License.
  */
 
+/* eslint-env amd */
 
 define([],function(){
     'use strict';
+
+    var TEX = MathJax.InputJax.TeX;
 
     // this is mainly here for documentation purposes
     var default_options = {
@@ -135,18 +138,18 @@ define([],function(){
                         num.frac += '0'.repeat(-n);
                     }
                     break
-            };
-        };
+            }
+        }
         if(
             options['zero-decimal-to-integer']
             && !(num.frac && parseInt(num.frac))
-        ) {num.frac=null;num.sep=null;};
-    };
+        ) {num.frac=null;num.sep=null;}
+    }
     function postprocComplExp(options,num){
         postprocDecimal(options,num.re);
         postprocDecimal(options,num.im,false,true);
         postprocDecimal(options,num.exp,true);
-    };
+    }
 
     function postprocAll(options,nums){
         nums.forEach(function(quot){
@@ -155,7 +158,7 @@ define([],function(){
                 postprocComplExp(options,num);
             })
         });
-    };
+    }
 
 
 
@@ -200,7 +203,7 @@ define([],function(){
             + dm
             + fractional
         );
-    };
+    }
 
     function fmtComplExp(options,num){
         var ob='',cb='';
@@ -230,7 +233,7 @@ define([],function(){
         } else if(im) ret += im;
         if(num.sign){
             // num.sign only for lone signs without any number
-            if(num.re || num.im) error('sign but also re or im given');  // should never happen
+            if(num.re || num.im) TEX.Error('sign but also re or im given');  // should never happen
             ret += ' ' + num.sign;
         }
 
@@ -250,7 +253,7 @@ define([],function(){
                 );
         }
         return ret;
-    };
+    }
 
 
     function processAll(options,nums){

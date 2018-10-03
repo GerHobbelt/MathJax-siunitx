@@ -22,6 +22,8 @@
  *  limitations under the License.
  */
 
+/* eslint-env amd */
+
 define(
   ['./siunitx-options-definition','./unit-definitions','./unit-parser','./number-parser'],
   function(SIunitxOptions, UNITDEFS, SIUnitParser, NUMBERPARSER)
@@ -92,7 +94,7 @@ define(
           mathsize: MML.SIZE.NORMAL,
           scriptlevel: 0
         });
-      };
+      }
       var that=this;
       preformatted.forEach(function(num,i){
         if(i){
@@ -103,8 +105,8 @@ define(
               that.Push(TEX.Parse(('\\text{'+options['list-final-separator']+'}')).mml());
           } else {
             that.Push(TEX.Parse(('\\text{'+options['list-pair-separator']+'}')).mml());
-          };
-        };
+          }
+        }
         if (preunits) {
           that.Push(preunits.mml());
           that.Push(medspace());
@@ -228,7 +230,7 @@ define(
 
   };
 
-  // ------ regsiter the commands with MathJax
+  // ------ register the commands with MathJax
   TEX.Definitions.Add({
     macros: {
       //
